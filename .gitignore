@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Large model files
+public/Models/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
