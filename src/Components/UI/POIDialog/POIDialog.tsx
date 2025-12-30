@@ -1,8 +1,8 @@
 import "./POIDialog.css";
-import { type PointOfInterestData } from "../../../Types/poi";
+import type { POI } from "../../../Types/poi";
 
 interface POIDialogProps {
-  data: PointOfInterestData | null;
+  data: POI | null;
   onClose: () => void;
 }
 

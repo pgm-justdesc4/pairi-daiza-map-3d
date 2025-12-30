@@ -4,7 +4,7 @@ import "./reset.css";
 import "./index.css";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience.tsx";
-import POIDialog from "./Components/UI/POI/POIDialog.tsx";
+import POIDialog from "./Components/UI/POIDialog/POIDialog.tsx";
 import { useCameraStore } from "./Store/CameraStore.ts";
 
 const cameraSettings = {

@@ -1,4 +1,4 @@
-export interface PointOfInterestData {
+export type POI = {
   id: string;
   name: string;
   description: string;
@@ -6,4 +6,4 @@ export interface PointOfInterestData {
   cameraPosition: [number, number, number];
   cameraTarget: [number, number, number];
   facts: string[];
-}
+};

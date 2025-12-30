@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import type { PointOfInterestData } from "../Types/poi";
+import type { PointOfInterest } from "../Types/poi";
 
 interface CameraState {
   initialPosition: [number, number, number];
-  selectedPOI: PointOfInterestData | null;
+  selectedPOI: PointOfInterest | null;
   setInitialPosition: (position: [number, number, number]) => void;
-  setSelectedPOI: (poi: PointOfInterestData | null) => void;
+  setSelectedPOI: (poi: PointOfInterest | null) => void;
   resetCamera: () => void;
 }
 

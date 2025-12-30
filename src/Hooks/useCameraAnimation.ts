@@ -12,7 +12,7 @@ export function useCameraAnimation() {
       target: [number, number, number],
       duration: number = 2
     ) => {
-      // Kill any existing animations
+      // Disable any existing animations
       gsap.killTweensOf(camera.position);
 
       // Calculate the target quaternion (rotation) for looking at the target

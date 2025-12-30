@@ -5,12 +5,12 @@ import PointOfInterest from "./Components/UI/POI/PointOfInterest";
 import { useCameraAnimation } from "./Hooks/useCameraAnimation";
 import { useCameraStore } from "./Store/CameraStore";
 import data from "./Data/data.json";
-import type { PointOfInterestData } from "./Types/poi";
+import type { POI } from "./Types/poi";
 import { useEffect } from "react";
 import { useThree } from "@react-three/fiber";
 
 interface ExperienceProps {
-  onPOISelect: (poi: PointOfInterestData) => void;
+  onPOISelect: (poi: POI) => void;
   resetCameraRef: React.MutableRefObject<(() => void) | null>;
 }
 
@@ -29,7 +29,7 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
     ]);
   }, [camera.position, setInitialPosition]);
 
-  const handlePOIClick = (poi: PointOfInterestData) => {
+  const handlePOIClick = (poi: POI) => {
     animateTo(poi.cameraPosition, poi.cameraTarget, 3);
     setSelectedPOI(poi);
     onPOISelect(poi);
@@ -38,7 +38,6 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
   // Expose resetCamera to parent via ref
   useEffect(() => {
     const resetCamera = () => {
-      // Reset to exact initial position, looking straight down at origin
       animateTo(initialPosition, [0, 0, 0], 3);
       setSelectedPOI(null);
     };
@@ -78,8 +77,8 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
       {data.pointsOfInterest.map((poi) => (
         <PointOfInterest
           key={poi.id}
-          data={poi as PointOfInterestData}
-          onClick={() => handlePOIClick(poi as PointOfInterestData)}
+          data={poi as POI}
+          onClick={() => handlePOIClick(poi as POI)}
           isHidden={selectedPOI !== null}
         />
       ))}
