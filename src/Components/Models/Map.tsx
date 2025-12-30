@@ -7,10 +7,8 @@ export default function Map() {
 
   useEffect(() => {
     scene.traverse((child) => {
-      if (child.isMesh) {
-        child.castShadow = false;
-        child.receiveShadow = true;
-      }
+      child.castShadow = false;
+      child.receiveShadow = true;
     });
   }, [scene]);
 

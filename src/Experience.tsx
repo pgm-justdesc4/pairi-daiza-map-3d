@@ -8,6 +8,7 @@ import data from "./Data/data.json";
 import type { POI } from "./Types/poi";
 import { useEffect } from "react";
 import { useThree } from "@react-three/fiber";
+import Water from "./Components/Models/Water";
 
 interface ExperienceProps {
   onPOISelect: (poi: POI) => void;
@@ -71,6 +72,7 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
       <group>
         <Elephants />
         <Map />
+        <Water />
       </group>
 
       {/* Points of Interest */}
