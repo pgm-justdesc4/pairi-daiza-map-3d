@@ -1,8 +1,18 @@
 import { useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
+import { useEffect } from "react";
 
 export default function Map() {
   const { scene } = useGLTF("/Models/Map.glb");
+
+  useEffect(() => {
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        child.castShadow = false;
+        child.receiveShadow = true;
+      }
+    });
+  }, [scene]);
 
   const { position, rotation, scale } = useControls("Map", {
     position: {

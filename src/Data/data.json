@@ -4,9 +4,9 @@
       "id": "elephants",
       "name": "African Elephants",
       "description": "The African elephant is the largest land animal on Earth. They are known for their intelligence, strong family bonds, and impressive memory.",
-      "position": [-279.8, -294.2, -210.1],
-      "cameraPosition": [-279.8, 50, 100],
-      "cameraTarget": [-279.8, -294.2, -210.1],
+      "position": [-350, -294.2, -150],
+      "cameraPosition": [-300, 200, 100],
+      "cameraTarget": [-200, -275, -210.1],
       "facts": [
         "Can weigh up to 6,000 kg",
         "Live in matriarchal herds",

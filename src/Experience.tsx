@@ -1,12 +1,13 @@
-import { OrbitControls } from "@react-three/drei";
 import Map from "./Components/Models/Map";
 import Clouds from "./Components/World/Clouds";
 import Elephants from "./Components/Models/Elephants";
 import PointOfInterest from "./Components/UI/POI/PointOfInterest";
 import { useCameraAnimation } from "./Hooks/useCameraAnimation";
+import { useCameraStore } from "./Store/CameraStore";
 import data from "./Data/data.json";
 import type { PointOfInterestData } from "./Types/poi";
 import { useEffect } from "react";
+import { useThree } from "@react-three/fiber";
 
 interface ExperienceProps {
   onPOISelect: (poi: PointOfInterestData) => void;
@@ -14,29 +15,55 @@ interface ExperienceProps {
 }
 
 function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
+  const { camera } = useThree();
   const { animateTo } = useCameraAnimation();
+  const { initialPosition, selectedPOI, setInitialPosition, setSelectedPOI } =
+    useCameraStore();
+
+  // Save initial camera state on mount
+  useEffect(() => {
+    setInitialPosition([
+      camera.position.x,
+      camera.position.y,
+      camera.position.z,
+    ]);
+  }, [camera.position, setInitialPosition]);
 
   const handlePOIClick = (poi: PointOfInterestData) => {
-    animateTo(poi.cameraPosition, poi.cameraTarget, 2);
+    animateTo(poi.cameraPosition, poi.cameraTarget, 3);
+    setSelectedPOI(poi);
     onPOISelect(poi);
-  };
-
-  const resetCamera = () => {
-    animateTo([0, 700, 0], [0, -200, 0], 2);
   };
 
   // Expose resetCamera to parent via ref
   useEffect(() => {
+    const resetCamera = () => {
+      // Reset to exact initial position, looking straight down at origin
+      animateTo(initialPosition, [0, 0, 0], 3);
+      setSelectedPOI(null);
+    };
+
     resetCameraRef.current = resetCamera;
-  }, []);
+  }, [resetCameraRef, initialPosition, animateTo, setSelectedPOI]);
   return (
     <>
-      {/* Controls */}
-      {/* <OrbitControls makeDefault /> */}
-
       {/* Lightning */}
       <ambientLight intensity={0.7} />
-      <directionalLight position={[10, 120, 5]} intensity={2} />
+      <directionalLight
+        position={[10, 120, 5]}
+        intensity={2}
+        castShadow
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
+        shadow-camera-left={-600}
+        shadow-camera-right={600}
+        shadow-camera-top={600}
+        shadow-camera-bottom={-600}
+        shadow-camera-near={1}
+        shadow-camera-far={800}
+        shadow-bias={-0.0005}
+        shadow-normalBias={0.05}
+      />
 
       {/* Clouds */}
       <Clouds />
@@ -53,6 +80,7 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
           key={poi.id}
           data={poi as PointOfInterestData}
           onClick={() => handlePOIClick(poi as PointOfInterestData)}
+          isHidden={selectedPOI !== null}
         />
       ))}
     </>

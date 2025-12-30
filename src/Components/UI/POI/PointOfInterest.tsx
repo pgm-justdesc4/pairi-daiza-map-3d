@@ -5,11 +5,13 @@ import { type PointOfInterestData } from "../../../Types/poi";
 interface PointOfInterestProps {
   data: PointOfInterestData;
   onClick: () => void;
+  isHidden?: boolean;
 }
 
 export default function PointOfInterest({
   data,
   onClick,
+  isHidden = false,
 }: PointOfInterestProps) {
   return (
     <group position={data.position}>
@@ -30,11 +32,13 @@ export default function PointOfInterest({
       </mesh>
 
       {/* HTML Label */}
-      <Html distanceFactor={100} center>
-        <div className="poi-label" onClick={onClick}>
-          {data.name}
-        </div>
-      </Html>
+      {!isHidden && (
+        <Html center transform={false} sprite>
+          <div className="poi-label" onClick={onClick}>
+            {data.name}
+          </div>
+        </Html>
+      )}
     </group>
   );
 }
