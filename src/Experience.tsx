@@ -9,9 +9,8 @@ import type { POI } from "./Types/poi";
 import { useEffect } from "react";
 import { useThree } from "@react-three/fiber";
 import Water from "./Components/Models/Water";
-import Orangutans from "./Components/Models/OrangUtans";
+import Orangutans from "./Components/Models/Orangutans";
 import Gibbons from "./Components/Models/Gibbons";
-import { OrbitControls } from "@react-three/drei";
 
 interface ExperienceProps {
   onPOISelect: (poi: POI) => void;
