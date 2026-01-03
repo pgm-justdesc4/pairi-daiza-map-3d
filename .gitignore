@@ -25,3 +25,4 @@ public/Models/
 *.njsproj
 *.sln
 *.sw?
+.vercel

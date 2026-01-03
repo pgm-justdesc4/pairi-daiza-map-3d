@@ -9,9 +9,9 @@
         "Live in matriarchal herds",
         "Communicate through low-frequency sounds"
       ],
-      "position": [-350, -294.2, -150],
-      "cameraPosition": [-300, 200, 100],
-      "cameraTarget": [-200, -275, -210.1]
+      "position": [-200, 0, -90],
+      "cameraPosition": [-350, -50, 0],
+      "cameraTarget": [-350, -140, -70]
     },
     {
       "id": 2,
@@ -23,8 +23,8 @@
         "Have the longest interbirth interval of any land mammal"
       ],
       "position": [50, 0, 30],
-      "cameraPosition": [-20, 20, 200],
-      "cameraTarget": [80, -120, 0]
+      "cameraPosition": [50, -20, 200],
+      "cameraTarget": [100, -200, -20]
     },
     {
       "id": 3,
@@ -61,8 +61,8 @@
         "The Candi Kurung, the supreme edifice in lava stone from the holiest of mountains, Mount Agung, represents the sky and the wind."
       ],
       "position": [-100, 0, 250],
-      "cameraPosition": [70, 150, 400],
-      "cameraTarget": [0, 50, 250]
+      "cameraPosition": [-20, 200, 500],
+      "cameraTarget": [-20, -50, 200]
     },
     {
       "id": 6,
@@ -72,8 +72,8 @@
         "Craftsman’s House, in the details of its decor, and, with a little bit of imagination or reverie, you shouldn’t be surprised to see the saffron-coloured robe of a Buddhist monk appear."
       ],
       "position": [320, 0, -50],
-      "cameraPosition": [320, 0, 220],
-      "cameraTarget": [420, -100, 20]
+      "cameraPosition": [420, 0, 220],
+      "cameraTarget": [420, -100, 100]
     }
   ]
 }

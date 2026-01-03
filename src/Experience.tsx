@@ -34,7 +34,7 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
   }, [camera.position, setInitialPosition]);
 
   const handlePOIClick = (poi: POI) => {
-    animateTo(poi.cameraPosition, poi.cameraTarget, 3);
+    animateTo(poi.cameraPosition, poi.cameraTarget, 2);
     setSelectedPOI(poi);
     onPOISelect(poi);
   };
@@ -42,7 +42,7 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
   // Expose resetCamera to parent via ref
   useEffect(() => {
     const resetCamera = () => {
-      animateTo(initialPosition, [0, 0, 0], 3);
+      animateTo(initialPosition, [0, 0, 0], 2);
       setSelectedPOI(null);
     };
 

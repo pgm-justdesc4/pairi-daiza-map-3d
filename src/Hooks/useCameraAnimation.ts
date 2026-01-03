@@ -15,12 +15,22 @@ export function useCameraAnimation() {
       // Disable any existing animations
       gsap.killTweensOf(camera.position);
 
-      // Calculate the target quaternion (rotation) for looking at the target
+      // Store the starting position and quaternion
+      const startPosition = camera.position.clone();
       const startQuaternion = camera.quaternion.clone();
+
+      // Calculate the target quaternion (rotation) for looking at the target
       const tempCamera = camera.clone();
       tempCamera.position.set(position[0], position[1], position[2]);
       tempCamera.lookAt(target[0], target[1], target[2]);
       const endQuaternion = tempCamera.quaternion.clone();
+
+      // Create the end position vector
+      const endPosition = new THREE.Vector3(
+        position[0],
+        position[1],
+        position[2]
+      );
 
       // Animate both position and rotation smoothly
       const animationState = { t: 0 };
@@ -32,12 +42,8 @@ export function useCameraAnimation() {
         onUpdate: () => {
           // Interpolate position
           camera.position.lerpVectors(
-            new THREE.Vector3(
-              camera.position.x,
-              camera.position.y,
-              camera.position.z
-            ),
-            new THREE.Vector3(position[0], position[1], position[2]),
+            startPosition,
+            endPosition,
             animationState.t
           );
 

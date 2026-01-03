@@ -21,13 +21,13 @@ const OrangutanConfigs: Orangutan[] = [
   {
     id: 3,
     position: [0, -120, 100],
-    rotation: [-0.45, 5.8, 0],
+    rotation: [-0.45, 6.5, 0],
     scale: 0.2,
     animation: "Animation",
   },
   {
     id: 4,
-    position: [50, -115, 100],
+    position: [50, -117, 100],
     rotation: [-0.45, 4, 0],
     scale: 0.2,
     animation: "Animation",
