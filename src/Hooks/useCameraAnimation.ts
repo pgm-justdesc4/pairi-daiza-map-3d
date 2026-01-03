@@ -28,7 +28,7 @@ export function useCameraAnimation() {
       gsap.to(animationState, {
         t: 1,
         duration,
-        ease: "power2.inOut",
+        ease: "power3.inOut",
         onUpdate: () => {
           // Interpolate position
           camera.position.lerpVectors(

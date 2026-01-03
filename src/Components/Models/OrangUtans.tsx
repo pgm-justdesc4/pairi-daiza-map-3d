@@ -6,7 +6,7 @@ import type { Orangutan } from "../../Types/orangutan";
 const OrangutanConfigs: Orangutan[] = [
   {
     id: 1,
-    position: [100, -200, -100],
+    position: [100, -225, -100],
     rotation: [-0.45, 5.8, 0],
     scale: 0.25,
     animation: "",

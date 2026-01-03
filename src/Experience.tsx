@@ -11,6 +11,7 @@ import { useThree } from "@react-three/fiber";
 import Water from "./Components/Models/Water";
 import Orangutans from "./Components/Models/OrangUtans";
 import Gibbons from "./Components/Models/Gibbons";
+import { OrbitControls } from "@react-three/drei";
 
 interface ExperienceProps {
   onPOISelect: (poi: POI) => void;
@@ -49,6 +50,7 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
   }, [resetCameraRef, initialPosition, animateTo, setSelectedPOI]);
   return (
     <>
+      {/* <OrbitControls makeDefault /> */}
       {/* Lightning */}
       <ambientLight intensity={0.7} />
       <directionalLight

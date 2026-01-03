@@ -36,8 +36,8 @@
         "Form monogamous pair bonds"
       ],
       "position": [50, 0, -300],
-      "cameraPosition": [0, -20, -220],
-      "cameraTarget": [10, -80, -250]
+      "cameraPosition": [150, -450, -850],
+      "cameraTarget": [70, -420, -525]
     },
     {
       "id": 4,

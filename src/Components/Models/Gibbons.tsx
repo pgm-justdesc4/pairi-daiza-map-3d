@@ -6,17 +6,17 @@ import type { Gibbon } from "../../Types/gibbon";
 const GibbonConfigs: Gibbon[] = [
   {
     id: 1,
-    position: [100, -200, -100],
-    rotation: [-0.45, 5.8, 0],
-    scale: 0.25,
-    animation: "",
+    position: [50, -472, -580],
+    rotation: [-0.45, 3, 0],
+    scale: 50,
+    animation: "Armature|Idle",
   },
   {
     id: 2,
-    position: [170, -200, -400],
-    rotation: [-0.45, 5.8, 0],
+    position: [170, -490, -620],
+    rotation: [-0.45, 3.3, 0],
     scale: 50,
-    animation: "Animation",
+    animation: "Armature|Smile",
   },
 ];
 
