@@ -8,9 +8,9 @@ import data from "./Data/data.json";
 import type { POI } from "./Types/poi";
 import { useEffect } from "react";
 import { useThree } from "@react-three/fiber";
-import Water from "./Components/Models/Water";
-import Orangutans from "./Components/Models/Orangutans";
-import Gibbons from "./Components/Models/Gibbons";
+import Water from "./Components/Models/Water.tsx";
+import Orangutans from "./Components/Models/Orangutans.tsx";
+import Gibbons from "./Components/Models/Gibbons.tsx";
 
 interface ExperienceProps {
   onPOISelect: (poi: POI) => void;
