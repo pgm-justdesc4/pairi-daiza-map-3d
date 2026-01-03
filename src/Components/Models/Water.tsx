@@ -49,7 +49,7 @@ export default function Water() {
       video.play();
       video.playbackRate = videoSpeed;
       const texture = new THREE.VideoTexture(video);
-      texture.encoding = THREE.sRGBEncoding;
+      texture.colorSpace = THREE.SRGBColorSpace;
       texture.needsUpdate = true;
       setVideoTexture(texture);
     }
@@ -65,13 +65,17 @@ export default function Water() {
     if (videoTexture && scene) {
       // Find the mesh in the GLB and apply the video texture
       scene.traverse((child) => {
-        if (child.isMesh) {
-          child.castShadow = false;
-          child.receiveShadow = true;
-          if (child.material) {
-            child.material.map = videoTexture;
-            child.material.needsUpdate = true;
-            child.material.transparent = true;
+        if ((child as THREE.Mesh).isMesh) {
+          const mesh = child as THREE.Mesh;
+          mesh.castShadow = false;
+          mesh.receiveShadow = true;
+          if (
+            mesh.material &&
+            (mesh.material as THREE.MeshStandardMaterial).map !== undefined
+          ) {
+            (mesh.material as THREE.MeshStandardMaterial).map = videoTexture;
+            (mesh.material as THREE.MeshStandardMaterial).needsUpdate = true;
+            (mesh.material as THREE.MeshStandardMaterial).transparent = true;
           }
         }
       });
