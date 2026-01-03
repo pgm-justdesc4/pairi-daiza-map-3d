@@ -18,13 +18,6 @@ const elephantConfigs: Elephant[] = [
     scale: 1425,
     animation: "Attack_1",
   },
-  {
-    id: 3,
-    position: [-279.8, -294.2, -90.1],
-    rotation: [-0.45, 6.61, 0],
-    scale: 1425,
-    animation: "Lying_01",
-  },
 ];
 
 function Elephant({ position, rotation, scale, animation }: Elephant) {

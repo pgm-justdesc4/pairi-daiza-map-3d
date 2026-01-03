@@ -1,16 +1,16 @@
 import { create } from "zustand";
-import type { PointOfInterest } from "../Types/poi";
+import type { POI } from "../Types/poi";
 
 interface CameraState {
   initialPosition: [number, number, number];
-  selectedPOI: PointOfInterest | null;
+  selectedPOI: POI | null;
   setInitialPosition: (position: [number, number, number]) => void;
-  setSelectedPOI: (poi: PointOfInterest | null) => void;
+  setSelectedPOI: (poi: POI | null) => void;
   resetCamera: () => void;
 }
 
 export const useCameraStore = create<CameraState>((set) => ({
-  initialPosition: [0, 700, 0],
+  initialPosition: [0, 600, 0],
   selectedPOI: null,
 
   setInitialPosition: (position) => set({ initialPosition: position }),

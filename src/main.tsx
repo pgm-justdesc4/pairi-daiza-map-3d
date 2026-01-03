@@ -11,7 +11,7 @@ const cameraSettings = {
   fov: 60,
   near: 0.1,
   far: 100000,
-  position: [0, 700, 0] as [number, number, number],
+  position: [0, 600, 0] as [number, number, number],
 };
 
 function App() {
