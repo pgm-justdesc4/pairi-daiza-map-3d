@@ -12,6 +12,32 @@
       "position": [-350, -294.2, -150],
       "cameraPosition": [-300, 200, 100],
       "cameraTarget": [-200, -275, -210.1]
+    },
+    {
+      "id": 2,
+      "name": "Orang utans",
+      "description": "Orang utans are great apes known for their distinctive red fur and high intelligence. They are primarily arboreal and spend most of their time in trees.",
+      "facts": [
+        "Native to Borneo and Sumatra",
+        "Use tools to obtain food",
+        "Have the longest interbirth interval of any land mammal"
+      ],
+      "position": [50, 0, 30],
+      "cameraPosition": [-20, 20, 200],
+      "cameraTarget": [80, -120, 0]
+    },
+    {
+      "id": 3,
+      "name": "Lunch place",
+      "description": "A great spot to relax and enjoy a meal while observing the beautiful surroundings of the park.",
+      "facts": [
+        "Offers a variety of local and international cuisines",
+        "Family-friendly atmosphere",
+        "Scenic views of the park's landscape"
+      ],
+      "position": [200, 0, 250],
+      "cameraPosition": [200, 20, 50],
+      "cameraTarget": [150, 0, 200]
     }
   ]
 }
