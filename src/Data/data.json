@@ -15,8 +15,8 @@
     },
     {
       "id": 2,
-      "name": "Orang utans",
-      "description": "Orang utans are great apes known for their distinctive red fur and high intelligence. They are primarily arboreal and spend most of their time in trees.",
+      "name": "Orangutans",
+      "description": "Orangutans are great apes known for their distinctive red fur and high intelligence. They are primarily arboreal and spend most of their time in trees.",
       "facts": [
         "Native to Borneo and Sumatra",
         "Use tools to obtain food",
@@ -28,6 +28,19 @@
     },
     {
       "id": 3,
+      "name": "Gibbon apes",
+      "description": "Gibbons are small apes known for their agility and acrobatic skills. They are excellent brachiators, swinging from branch to branch with ease.",
+      "facts": [
+        "Live in Southeast Asia",
+        "Known for their loud, melodious calls",
+        "Form monogamous pair bonds"
+      ],
+      "position": [50, 0, -300],
+      "cameraPosition": [0, -20, -220],
+      "cameraTarget": [10, -80, -250]
+    },
+    {
+      "id": 4,
       "name": "Lunch place",
       "description": "A great spot to relax and enjoy a meal while observing the beautiful surroundings of the park.",
       "facts": [
@@ -36,8 +49,31 @@
         "Scenic views of the park's landscape"
       ],
       "position": [200, 0, 250],
-      "cameraPosition": [200, 20, 50],
-      "cameraTarget": [150, 0, 200]
+      "cameraPosition": [250, 100, 500],
+      "cameraTarget": [200, 0, 200]
+    },
+    {
+      "id": 5,
+      "name": "The Flower Temple",
+      "description": "The Flower Temple is dedicated to the universe of flowers, in accordance with the animistic principles in Balinese Hinduism that every form of life is of divine origin, worthy of a temple.",
+      "facts": [
+        "The water, the cradle of all life, flows along its flank, accompanied by 2 small dragon snakes.",
+        "The Candi Kurung, the supreme edifice in lava stone from the holiest of mountains, Mount Agung, represents the sky and the wind."
+      ],
+      "position": [-100, 0, 250],
+      "cameraPosition": [70, 150, 400],
+      "cameraTarget": [0, 50, 250]
+    },
+    {
+      "id": 6,
+      "name": "The Craftsman’s House",
+      "description": "Near the wall of the Abbey, providing a genuine sanctuary dedicated to the elephant, a real Thai house, all in wood, the elegant roof on two levels and the columns supporting it rescued from a previous building that was destroyed by fire. There you can admire its numerous sculptures on various wooden supports, inspired above all by the elephant, which is a sacred animal in Asia. It reigns supreme in this place, away from the crowd, a peaceful atmosphere conducive to a little meditation.",
+      "facts": [
+        "Craftsman’s House, in the details of its decor, and, with a little bit of imagination or reverie, you shouldn’t be surprised to see the saffron-coloured robe of a Buddhist monk appear."
+      ],
+      "position": [320, 0, -50],
+      "cameraPosition": [320, 0, 220],
+      "cameraTarget": [420, -100, 20]
     }
   ]
 }

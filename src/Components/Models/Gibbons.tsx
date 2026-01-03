@@ -1,9 +1,9 @@
 import { useGLTF, useAnimations, Clone } from "@react-three/drei";
 import { useEffect, useRef } from "react";
-import type { Orangutan } from "../../Types/orangutan";
+import type { Gibbon } from "../../Types/gibbon";
 
-// Configuration for each Orangutan
-const OrangutanConfigs: Orangutan[] = [
+// Configuration for each Gibbon
+const GibbonConfigs: Gibbon[] = [
   {
     id: 1,
     position: [100, -200, -100],
@@ -13,37 +13,16 @@ const OrangutanConfigs: Orangutan[] = [
   },
   {
     id: 2,
-    position: [170, -200, -50],
-    rotation: [-0.45, 3.5, 0],
-    scale: 0.18,
-    animation: "Animation",
-  },
-  {
-    id: 3,
-    position: [0, -120, 100],
+    position: [170, -200, -400],
     rotation: [-0.45, 5.8, 0],
-    scale: 0.2,
-    animation: "Animation",
-  },
-  {
-    id: 4,
-    position: [50, -115, 100],
-    rotation: [-0.45, 4, 0],
-    scale: 0.2,
-    animation: "Animation",
-  },
-  {
-    id: 5,
-    position: [230, -115, 145],
-    rotation: [-0.45, 1, 0],
-    scale: 0.2,
+    scale: 50,
     animation: "Animation",
   },
 ];
 
-function Orangutan({ position, rotation, scale, animation }: Orangutan) {
+function Gibbon({ position, rotation, scale, animation }: Gibbon) {
   const group = useRef(null);
-  const { scene, animations } = useGLTF("/Models/orangutan.glb");
+  const { scene, animations } = useGLTF("/Models/Gibbon.glb");
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -66,11 +45,11 @@ function Orangutan({ position, rotation, scale, animation }: Orangutan) {
   );
 }
 
-export default function Orangutans() {
+export default function Gibbons() {
   return (
     <group>
-      {OrangutanConfigs.map((config) => (
-        <Orangutan
+      {GibbonConfigs.map((config) => (
+        <Gibbon
           key={config.id}
           position={config.position}
           rotation={config.rotation}
