@@ -11,6 +11,7 @@ import { useThree } from "@react-three/fiber";
 import Water from "./Components/Models/Water.tsx";
 import Orangutans from "./Components/Models/Orangutans.tsx";
 import Gibbons from "./Components/Models/Gibbons.tsx";
+import WalkingElephants from "./Components/Models/WalkingElephants.tsx";
 
 interface ExperienceProps {
   onPOISelect: (poi: POI) => void;
@@ -76,6 +77,7 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
         <Elephants />
         <Orangutans />
         <Gibbons />
+        <WalkingElephants />
         <Map />
         <Water />
       </group>

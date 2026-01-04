@@ -1,0 +1,132 @@
+import { useGLTF, useAnimations, Clone } from "@react-three/drei";
+import { useEffect, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
+import type { Elephant } from "../../Types/elephant";
+import * as THREE from "three";
+
+interface WalkingElephant extends Elephant {
+  waypoints: [number, number, number][];
+  speed: number;
+}
+
+// Configuration for each Elephant with movement paths
+const ElephantConfigs: WalkingElephant[] = [
+  {
+    id: 1,
+    position: [50, -472, -580],
+    rotation: [-0.45, 4, 0],
+    scale: 1425,
+    animation: "Loco_WalkSlow",
+    waypoints: [
+      [-300, -472, -580],
+      [500, -472, -580],
+    ],
+    speed: 20, // Units per second
+  },
+  {
+    id: 2,
+    position: [170, -490, -620],
+    rotation: [-0.45, 2, 0],
+    scale: 1425,
+    animation: "Loco_Run",
+    waypoints: [
+      [-300, -490, -620],
+      [500, -490, -620],
+    ],
+    speed: 50, // Units per second
+  },
+];
+
+function Elephant({
+  rotation,
+  scale,
+  animation,
+  waypoints,
+  speed,
+}: WalkingElephant) {
+  const group = useRef<THREE.Group>(null);
+  const { scene, animations } = useGLTF("/Models/african_elephant.glb");
+  const { actions } = useAnimations(animations, group);
+
+  const currentWaypointIndex = useRef(0);
+  const currentPosition = useRef(new THREE.Vector3(...waypoints[0]));
+
+  useEffect(() => {
+    scene.traverse((child) => {
+      child.castShadow = true;
+      child.receiveShadow = true;
+    });
+  }, [scene]);
+
+  useEffect(() => {
+    if (actions && actions[animation]) {
+      actions[animation].play();
+    }
+  }, [actions, animation]);
+
+  // Animate movement using useFrame
+  useFrame((state, delta) => {
+    if (!group.current) return;
+
+    const targetWaypoint = waypoints[currentWaypointIndex.current];
+    const target = new THREE.Vector3(
+      targetWaypoint[0],
+      targetWaypoint[1],
+      targetWaypoint[2]
+    );
+
+    // Calculate direction to target (only in X and Z)
+    const direction = new THREE.Vector3(
+      target.x - currentPosition.current.x,
+      0, // Don't move in Y
+      target.z - currentPosition.current.z
+    );
+    const distance = direction.length();
+
+    if (distance < 1) {
+      // Reached waypoint, move to next
+      currentWaypointIndex.current =
+        (currentWaypointIndex.current + 1) % waypoints.length;
+    } else {
+      // Move towards target
+      direction.normalize();
+      const moveDistance = Math.min(speed * delta, distance);
+      currentPosition.current.x += direction.x * moveDistance;
+      currentPosition.current.z += direction.z * moveDistance;
+      // Keep Y constant
+      currentPosition.current.y = targetWaypoint[1];
+
+      // Update position
+      group.current.position.copy(currentPosition.current);
+
+      // Update rotation to face movement direction
+      const angle = Math.atan2(direction.x, direction.z);
+      group.current.rotation.y = angle;
+    }
+  });
+
+  return (
+    <group ref={group} rotation={rotation} scale={scale}>
+      <Clone object={scene} />
+    </group>
+  );
+}
+
+export default function WalkingElephants() {
+  return (
+    <group>
+      {ElephantConfigs.map((config) => (
+        <Elephant
+          key={config.id}
+          id={config.id}
+          position={config.position}
+          rotation={config.rotation}
+          scale={config.scale}
+          animation={config.animation}
+          waypoints={config.waypoints}
+          speed={config.speed}
+        />
+      ))}
+    </group>
+  );
+}
