@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,15 +13,13 @@
 
 .loading-content {
     text-align: center;
-    color: white;
+    color: #333;
 }
 
-.loading-title {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
+.loading-logo {
+    width: 35rem;
+    margin: 2rem auto;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
 }
 
 .loading-bar-container {
@@ -35,7 +33,7 @@
 
 .loading-bar {
     height: 100%;
-    background: linear-gradient(90deg, #fff 0%, #e0e0e0 100%);
+    background: linear-gradient(90deg, #4d321f 0%, #182848 100%);
     border-radius: 10px;
     transition: width 0.3s ease;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);

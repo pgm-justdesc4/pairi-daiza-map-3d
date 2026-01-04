@@ -23,7 +23,13 @@ function LoadingScreen() {
   return (
     <div className="loading-screen">
       <div className="loading-content">
-        <h1 className="loading-title">Pairi Daiza 3D</h1>
+        <figure className="loading-logo">
+          <img
+            src="/Images/Logo.png"
+            alt="Pairi Daiza Logo"
+            className="loading-logo-image"
+          />
+        </figure>
         <div className="loading-bar-container">
           <div className="loading-bar" style={{ width: `${progress}%` }}></div>
         </div>

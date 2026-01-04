@@ -1,0 +1,13 @@
+.logo {
+    position: fixed;
+    top: 1.25rem;
+    left: 2rem;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.logo img {
+    width: 15rem;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}

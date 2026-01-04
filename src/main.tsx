@@ -7,6 +7,7 @@ import Experience from "./Experience.tsx";
 import POIDialog from "./Components/UI/POIDialog/POIDialog.tsx";
 import MusicToggle from "./Components/UI/MusicToggle/MusicToggle.tsx";
 import LoadingScreen from "./Components/UI/LoadingScreen/LoadingScreen.tsx";
+import Logo from "./Components/UI/Logo/Logo.tsx";
 import { useCameraStore } from "./Store/CameraStore.ts";
 
 const cameraSettings = {
@@ -39,6 +40,7 @@ function App() {
         </Suspense>
       </Canvas>
       <LoadingScreen />
+      <Logo />
       <MusicToggle />
       {selectedPOI && (
         <POIDialog data={selectedPOI} onClose={handleCloseDialog} />
