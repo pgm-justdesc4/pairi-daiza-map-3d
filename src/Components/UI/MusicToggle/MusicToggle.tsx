@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import "./MusicToggle.css";
+import { useSoundStore } from "../../../Store/SoundStore";
 
 function MusicToggle() {
   const [isPlaying, setIsPlaying] = useState(true);
+  const setSound = useSoundStore((state) => state.setSound);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -31,10 +33,12 @@ function MusicToggle() {
 
     if (isPlaying) {
       audioRef.current.pause();
+      setSound(false);
     } else {
       audioRef.current.play().catch((error) => {
         console.error("Error playing audio:", error);
       });
+      setSound(true);
     }
     setIsPlaying(!isPlaying);
   };

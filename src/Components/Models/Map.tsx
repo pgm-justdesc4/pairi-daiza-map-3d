@@ -1,10 +1,13 @@
 import { useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
-import { useEffect } from "react";
-import { RigidBody } from "@react-three/rapier";
+import { useEffect, useRef } from "react";
+import { RigidBody, RapierRigidBody } from "@react-three/rapier";
+import { useLoadingStore } from "../../Store/LoadingStore";
 
 export default function Map() {
   const { scene } = useGLTF("/Models/Map.glb");
+  const setMapReady = useLoadingStore((state) => state.setMapReady);
+  const rigidBodyRef = useRef<RapierRigidBody>(null);
 
   useEffect(() => {
     scene.traverse((child) => {
@@ -12,6 +15,17 @@ export default function Map() {
       child.receiveShadow = true;
     });
   }, [scene]);
+
+  // Signal when rigid body and collider are ready
+  useEffect(() => {
+    // Small delay to ensure trimesh collider is fully computed
+    const timer = setTimeout(() => {
+      if (rigidBodyRef.current) {
+        setMapReady(true);
+      }
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [setMapReady]);
 
   const { position, rotation, scale } = useControls("Map", {
     position: {
@@ -31,7 +45,7 @@ export default function Map() {
   });
 
   return (
-    <RigidBody type="fixed" colliders="trimesh">
+    <RigidBody ref={rigidBodyRef} type="fixed" colliders="trimesh">
       <primitive
         object={scene}
         position={[position.x, position.y, position.z]}

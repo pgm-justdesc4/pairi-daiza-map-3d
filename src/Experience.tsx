@@ -4,6 +4,7 @@ import Elephants from "./Components/Models/Elephants";
 import PointOfInterest from "./Components/UI/POI/PointOfInterest";
 import { useCameraAnimation } from "./Hooks/useCameraAnimation";
 import { useCameraStore } from "./Store/CameraStore";
+import { useLoadingStore } from "./Store/LoadingStore";
 import data from "./Data/data.json";
 import type { POI } from "./Types/poi";
 import { useEffect } from "react";
@@ -26,6 +27,7 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
   const { animateTo } = useCameraAnimation();
   const { initialPosition, selectedPOI, setInitialPosition, setSelectedPOI } =
     useCameraStore();
+  const setPhysicsReady = useLoadingStore((state) => state.setPhysicsReady);
 
   // Save initial camera state on mount
   useEffect(() => {
@@ -35,6 +37,14 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
       camera.position.z,
     ]);
   }, [camera.position, setInitialPosition]);
+
+  // Signal physics ready after a delay to ensure everything is initialized
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPhysicsReady(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [setPhysicsReady]);
 
   const handlePOIClick = (poi: POI) => {
     animateTo(poi.cameraPosition, poi.cameraTarget, 2);

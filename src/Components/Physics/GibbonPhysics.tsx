@@ -1,7 +1,8 @@
 import { RigidBody } from "@react-three/rapier";
 import { useGLTF } from "@react-three/drei";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePhysicsStore } from "../../Store/PhysicsStore";
+import { useSoundStore } from "../../Store/SoundStore";
 
 interface Apple {
   id: number;
@@ -16,7 +17,20 @@ export default function GibbonPhysics() {
   const incrementAppleCount = usePhysicsStore(
     (state) => state.incrementAppleCount
   );
+  const isSoundEnabled = useSoundStore((state) => state.isSoundEnabled);
   const [apples, setApples] = useState<Apple[]>([]);
+  const clapSoundRef = useRef<HTMLAudioElement | null>(null);
+
+  // Initialize clap sound
+  useEffect(() => {
+    clapSoundRef.current = new Audio("/Sounds/383008__thedcheck__clap-3.wav");
+    clapSoundRef.current.volume = 0.5;
+    return () => {
+      if (clapSoundRef.current) {
+        clapSoundRef.current = null;
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (shouldSpawnApple) {
@@ -32,8 +46,16 @@ export default function GibbonPhysics() {
       setApples((prev) => [...prev, newApple]);
       incrementAppleCount();
       resetAppleSpawn();
+
+      // Play clap sound if sound is enabled
+      if (isSoundEnabled && clapSoundRef.current) {
+        clapSoundRef.current.currentTime = 0; // Reset to start
+        clapSoundRef.current.play().catch((error) => {
+          console.error("Error playing clap sound:", error);
+        });
+      }
     }
-  }, [shouldSpawnApple, resetAppleSpawn, incrementAppleCount]);
+  }, [shouldSpawnApple, resetAppleSpawn, incrementAppleCount, isSoundEnabled]);
   return (
     <group>
       {/* Falling Apples */}
