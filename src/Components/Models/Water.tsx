@@ -22,10 +22,7 @@ export default function Water() {
       step: 0.1,
     },
     videoSpeed: {
-      value: 0.3,
-      min: 0.1,
-      max: 2,
-      step: 0.01,
+      value: 0.35,
       label: "Video Speed",
     },
   });

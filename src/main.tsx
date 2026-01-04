@@ -5,6 +5,7 @@ import "./index.css";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience.tsx";
 import POIDialog from "./Components/UI/POIDialog/POIDialog.tsx";
+import MusicToggle from "./Components/UI/MusicToggle/MusicToggle.tsx";
 import { useCameraStore } from "./Store/CameraStore.ts";
 
 const cameraSettings = {
@@ -34,6 +35,7 @@ function App() {
           resetCameraRef={resetCameraRef}
         />
       </Canvas>
+      <MusicToggle />
       {selectedPOI && (
         <POIDialog data={selectedPOI} onClose={handleCloseDialog} />
       )}
