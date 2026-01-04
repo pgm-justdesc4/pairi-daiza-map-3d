@@ -12,6 +12,9 @@ import Water from "./Components/Models/Water.tsx";
 import Orangutans from "./Components/Models/Orangutans.tsx";
 import Gibbons from "./Components/Models/Gibbons.tsx";
 import WalkingElephants from "./Components/Models/WalkingElephants.tsx";
+import { OrbitControls } from "@react-three/drei";
+import { Physics } from "@react-three/rapier";
+import GibbonPhysics from "./Components/Physics/GibbonPhysics.tsx";
 
 interface ExperienceProps {
   onPOISelect: (poi: POI) => void;
@@ -72,15 +75,20 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
       {/* Clouds */}
       <Clouds />
 
-      {/* Models */}
-      <group>
-        <Elephants />
-        <Orangutans />
-        <Gibbons />
-        <WalkingElephants />
-        <Map />
-        <Water />
-      </group>
+      {/* Physics */}
+      <Physics gravity={[0, -50, 0]}>
+        {/* Models */}
+        <group>
+          <Elephants />
+          <Orangutans />
+          <Gibbons />
+          <WalkingElephants />
+          <Map />
+          <Water />
+        </group>
+
+        <GibbonPhysics />
+      </Physics>
 
       {/* Points of Interest */}
       {data.pointsOfInterest.map((poi) => (

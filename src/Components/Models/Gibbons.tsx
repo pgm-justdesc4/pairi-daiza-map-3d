@@ -6,15 +6,15 @@ import type { Gibbon } from "../../Types/gibbon";
 const GibbonConfigs: Gibbon[] = [
   {
     id: 1,
-    position: [100, -450, -530],
-    rotation: [-0.45, 3, 0],
+    position: [100, -440, -510],
+    rotation: [-0.45, 3.3, 0],
     scale: 50,
     animation: "Armature|Idle",
   },
   {
     id: 2,
-    position: [150, -515, -665],
-    rotation: [-0.45, 3.2, 0],
+    position: [130, -472, -610],
+    rotation: [-0.45, 3.7, 0],
     scale: 50,
     animation: "Armature|Smile",
   },

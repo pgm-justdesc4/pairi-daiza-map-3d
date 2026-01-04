@@ -1,5 +1,6 @@
 import "./POIDialog.css";
 import type { POI } from "../../../Types/poi";
+import { usePhysicsStore } from "../../../Store/PhysicsStore";
 
 interface POIDialogProps {
   data: POI | null;
@@ -7,7 +8,14 @@ interface POIDialogProps {
 }
 
 export default function POIDialog({ data, onClose }: POIDialogProps) {
+  const triggerAppleSpawn = usePhysicsStore((state) => state.triggerAppleSpawn);
+  const appleCount = usePhysicsStore((state) => state.appleCount);
+
   if (!data) return null;
+
+  const isGibbonPOI = data.id === 3;
+  const maxApples = 50;
+  const canDropApple = appleCount < maxApples;
 
   return (
     <div className="poi-dialog-overlay" onClick={onClose}>
@@ -28,6 +36,16 @@ export default function POIDialog({ data, onClose }: POIDialogProps) {
             ))}
           </ul>
         </div>
+
+        {isGibbonPOI && (
+          <button
+            className="apple-spawn-button"
+            onClick={triggerAppleSpawn}
+            disabled={!canDropApple}
+          >
+            🍎 Drop Apple {appleCount > 0 && `(${appleCount}/${maxApples})`}
+          </button>
+        )}
       </div>
     </div>
   );

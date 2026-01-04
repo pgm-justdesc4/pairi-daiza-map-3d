@@ -14,12 +14,12 @@ const ElephantConfigs: WalkingElephant[] = [
   {
     id: 1,
     position: [50, -472, -580],
-    rotation: [-0.45, 4, 0],
+    rotation: [-0.45, 2.57, 0],
     scale: 1425,
     animation: "Loco_WalkSlow",
     waypoints: [
-      [-300, -472, -580],
-      [500, -472, -580],
+      [-100, -485, -600],
+      [-650, -485, -600],
     ],
     speed: 20, // Units per second
   },
@@ -30,8 +30,8 @@ const ElephantConfigs: WalkingElephant[] = [
     scale: 1425,
     animation: "Loco_Run",
     waypoints: [
-      [-300, -490, -620],
-      [500, -490, -620],
+      [-300, -500, -645],
+      [500, -500, -645],
     ],
     speed: 50, // Units per second
   },

@@ -1,6 +1,7 @@
 import { useGLTF } from "@react-three/drei";
 import { useControls } from "leva";
 import { useEffect } from "react";
+import { RigidBody } from "@react-three/rapier";
 
 export default function Map() {
   const { scene } = useGLTF("/Models/Map.glb");
@@ -30,11 +31,13 @@ export default function Map() {
   });
 
   return (
-    <primitive
-      object={scene}
-      position={[position.x, position.y, position.z]}
-      rotation={[rotation.x, rotation.y, rotation.z]}
-      scale={scale}
-    />
+    <RigidBody type="fixed" colliders="trimesh">
+      <primitive
+        object={scene}
+        position={[position.x, position.y, position.z]}
+        rotation={[rotation.x, rotation.y, rotation.z]}
+        scale={scale}
+      />
+    </RigidBody>
   );
 }

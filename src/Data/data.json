@@ -23,8 +23,8 @@
         "Have the longest interbirth interval of any land mammal"
       ],
       "position": [50, 0, 30],
-      "cameraPosition": [50, -20, 200],
-      "cameraTarget": [100, -200, -20]
+      "cameraPosition": [80, -20, 200],
+      "cameraTarget": [80, -200, -20]
     },
     {
       "id": 3,
@@ -36,8 +36,8 @@
         "Form monogamous pair bonds"
       ],
       "position": [50, 0, -300],
-      "cameraPosition": [150, -450, -850],
-      "cameraTarget": [70, -420, -525]
+      "cameraPosition": [20, -450, -800],
+      "cameraTarget": [20, -420, -500]
     },
     {
       "id": 4,
@@ -50,7 +50,7 @@
       ],
       "position": [200, 0, 250],
       "cameraPosition": [250, 100, 500],
-      "cameraTarget": [200, 0, 200]
+      "cameraTarget": [250, -20, 200]
     },
     {
       "id": 5,

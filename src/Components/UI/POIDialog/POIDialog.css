@@ -95,6 +95,42 @@
     }
 }
 
+.apple-spawn-button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.apple-spawn-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+}
+
+.apple-spawn-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+.apple-spawn-button:disabled {
+    background: linear-gradient(135deg, #999 0%, #bbb 100%);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.apple-spawn-button:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 @keyframes slideUp {
     from {
         transform: translateY(30px);
