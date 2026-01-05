@@ -2,9 +2,13 @@ import "./Logo.css";
 
 function Logo() {
   return (
-    <div className="logo">
-      <img src="/Images/Logo.png" alt="Logo" />
-    </div>
+    <header className="logo">
+      <img
+        className="logo__image"
+        src="/Images/Logo.png"
+        alt="Pairi Daiza Logo"
+      />
+    </header>
   );
 }
 

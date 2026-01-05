@@ -1,88 +1,174 @@
-.poi-dialog-overlay {
+/* POI Dialog - BEM Structure */
+.poi-dialog {
     position: fixed;
     top: 0;
     left: 0;
-    right: 2rem;
-    bottom: 2rem;
+    right: 0;
+    bottom: 0;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    z-index: 1000;
-    animation: fadeIn 0.3s ease;
+    padding: var(--spacing-lg);
+    z-index: 999;
+    background: transparent;
+    border: none;
+    pointer-events: none;
+    animation: fadeIn var(--transition-normal);
 }
 
-.poi-dialog {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    padding: 32px;
-    max-width: 500px;
-    width: 90%;
+.poi-dialog__content {
+    background: var(--color-white);
+    border: 0.125rem solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    max-width: 31.25rem;
+    width: 100%;
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideUp 0.3s ease;
+    box-shadow: 0 1.25rem 3.75rem var(--color-shadow-dark);
+    animation: slideUp var(--transition-normal);
+    pointer-events: auto;
 }
 
-.poi-dialog-close {
+.poi-dialog__close {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    background: none;
-    border: none;
-    font-size: 24px;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: var(--color-white);
+    border: 0.0625rem solid var(--color-primary);
+    font-size: 1.25rem;
     cursor: pointer;
-    color: #666;
-    width: 32px;
-    height: 32px;
+    color: var(--color-primary);
+    width: 2.5rem;
+    height: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    transition: all 0.2s ease;
+    border-radius: var(--radius-circle);
+    transition: all var(--transition-fast);
+    font-weight: 700;
 }
 
-.poi-dialog-close:hover {
-    background: #f0f0f0;
-    color: #000;
+.poi-dialog__close:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: rotate(90deg);
 }
 
-.poi-dialog-title {
-    margin: 0 0 16px 0;
-    font-size: 28px;
-    color: #ff6b35;
-    font-weight: bold;
+.poi-dialog__title {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 1.75rem;
+    color: var(--color-primary);
+    font-weight: 700;
 }
 
-.poi-dialog-description {
-    font-size: 16px;
+.poi-dialog__description {
+    font-size: 1rem;
     line-height: 1.6;
-    color: #333;
-    margin-bottom: 24px;
+    color: var(--color-gray-dark);
+    margin-bottom: var(--spacing-md);
 }
 
-.poi-dialog-facts {
-    background: hsla(0, 0%, 97%, 0.4);
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid #ff6b35;
+.poi-dialog__facts {
+    background: var(--color-white);
+    padding: 0;
+    margin-top: var(--spacing-md);
+    border-top: 0.0625rem solid var(--color-primary);
+    border-bottom: 0.0625rem solid var(--color-primary);
+    padding: var(--spacing-md) 0;
 }
 
-.poi-dialog-facts h3 {
-    margin: 0 0 12px 0;
-    font-size: 18px;
-    color: #333;
+.poi-dialog__facts-title {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 1rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.poi-dialog-facts ul {
+.poi-dialog__facts-list {
     margin: 0;
-    padding-left: 20px;
+    padding: 0;
+    list-style: none;
 }
 
-.poi-dialog-facts li {
-    margin-bottom: 8px;
-    color: #555;
-    line-height: 1.5;
+.poi-dialog__facts-item {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-gray-dark);
+    line-height: 1.6;
+    padding-left: var(--spacing-md);
+    position: relative;
+}
+
+.poi-dialog__facts-item::before {
+    content: "●";
+    color: var(--color-primary);
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+}
+
+.poi-dialog__facts-item:last-child {
+    margin-bottom: 0;
+}
+
+.poi-dialog__action {
+    position: absolute;
+    left: var(--spacing-md);
+    top: var(--spacing-md);
+    margin: 0;
+    padding: var(--spacing-sm);
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: 0.125rem solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: 0 0.25rem 0.5rem var(--color-shadow);
+    width: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    min-height: 8rem;
+}
+
+.poi-dialog__action-emoji {
+    font-size: 2rem;
+}
+
+.poi-dialog__action-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.poi-dialog__action:hover {
+    background: var(--color-white);
+    color: var(--color-primary);
+    box-shadow: 0 0.375rem 0.75rem var(--color-shadow-medium);
+    transform: translateX(-0.25rem);
+}
+
+.poi-dialog__action:active {
+    transform: translateX(0);
+}
+
+.poi-dialog__action:disabled {
+    background: var(--color-gray-medium);
+    border-color: var(--color-gray-medium);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.poi-dialog__action:disabled:hover {
+    transform: none;
+    box-shadow: 0 0.25rem 0.5rem var(--color-shadow);
 }
 
 @keyframes fadeIn {
@@ -95,45 +181,9 @@
     }
 }
 
-.apple-spawn-button {
-    margin-top: 20px;
-    width: 100%;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-}
-
-.apple-spawn-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
-}
-
-.apple-spawn-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
-}
-
-.apple-spawn-button:disabled {
-    background: linear-gradient(135deg, #999 0%, #bbb 100%);
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
-.apple-spawn-button:disabled:hover {
-    transform: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
 @keyframes slideUp {
     from {
-        transform: translateY(30px);
+        transform: translateY(1.875rem);
         opacity: 0;
     }
 

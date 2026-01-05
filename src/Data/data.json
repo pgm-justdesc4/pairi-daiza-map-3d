@@ -9,6 +9,7 @@
         "Live in matriarchal herds",
         "Communicate through low-frequency sounds"
       ],
+      "picture": "elephants.svg",
       "position": [-200, 0, -90],
       "cameraPosition": [-350, -50, 0],
       "cameraTarget": [-350, -140, -70]
@@ -22,6 +23,7 @@
         "Use tools to obtain food",
         "Have the longest interbirth interval of any land mammal"
       ],
+      "picture": "orangutans.svg",
       "position": [50, 0, 30],
       "cameraPosition": [80, -20, 200],
       "cameraTarget": [80, -200, -20]
@@ -35,6 +37,7 @@
         "Known for their loud, melodious calls",
         "Form monogamous pair bonds"
       ],
+      "picture": "gibbon-ape.svg",
       "position": [50, 0, -300],
       "cameraPosition": [20, -450, -800],
       "cameraTarget": [20, -420, -500]
@@ -48,6 +51,7 @@
         "Family-friendly atmosphere",
         "Scenic views of the park's landscape"
       ],
+      "picture": "lunch-place.svg",
       "position": [200, 0, 250],
       "cameraPosition": [250, 100, 500],
       "cameraTarget": [250, -20, 200]
@@ -60,6 +64,7 @@
         "The water, the cradle of all life, flows along its flank, accompanied by 2 small dragon snakes.",
         "The Candi Kurung, the supreme edifice in lava stone from the holiest of mountains, Mount Agung, represents the sky and the wind."
       ],
+      "picture": "flower-temple.svg",
       "position": [-100, 0, 250],
       "cameraPosition": [-20, 200, 500],
       "cameraTarget": [-20, -50, 200]
@@ -71,6 +76,7 @@
       "facts": [
         "Craftsman’s House, in the details of its decor, and, with a little bit of imagination or reverie, you shouldn’t be surprised to see the saffron-coloured robe of a Buddhist monk appear."
       ],
+      "picture": "craftsman-house.svg",
       "position": [320, 0, -50],
       "cameraPosition": [420, 0, 220],
       "cameraTarget": [420, -100, 100]

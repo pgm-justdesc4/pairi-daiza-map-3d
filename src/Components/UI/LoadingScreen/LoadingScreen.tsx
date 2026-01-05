@@ -21,19 +21,30 @@ function LoadingScreen() {
   if (!visible) return null;
 
   return (
-    <div className="loading-screen">
-      <div className="loading-content">
-        <figure className="loading-logo">
-          <img
-            src="/Images/Logo.png"
-            alt="Pairi Daiza Logo"
-            className="loading-logo-image"
-          />
+    <section
+      className="loading-screen"
+      role="alert"
+      aria-live="polite"
+      aria-label="Loading screen"
+    >
+      <div className="loading-screen__content">
+        <figure className="loading-screen__logo">
+          <img src="/Images/Logo.png" alt="Pairi Daiza Logo" />
         </figure>
-        <div className="loading-bar-container">
-          <div className="loading-bar" style={{ width: `${progress}%` }}></div>
+        <h1 className="loading-screen__title">The Kingdom of Ganesha</h1>
+        <div
+          className="loading-screen__progress"
+          role="progressbar"
+          aria-valuenow={progress}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
+          <div
+            className="loading-screen__progress-bar"
+            style={{ width: `${progress}%` }}
+          ></div>
         </div>
-        <p className="loading-text">
+        <p className="loading-screen__text">
           {progress < 100
             ? `${Math.round(progress)}%`
             : isFullyLoaded
@@ -41,7 +52,7 @@ function LoadingScreen() {
             : "Initializing..."}
         </p>
       </div>
-    </div>
+    </section>
   );
 }
 

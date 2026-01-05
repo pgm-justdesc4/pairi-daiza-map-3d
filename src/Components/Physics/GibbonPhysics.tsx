@@ -1,8 +1,10 @@
 import { RigidBody } from "@react-three/rapier";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Html } from "@react-three/drei";
 import { useEffect, useState, useRef } from "react";
 import { usePhysicsStore } from "../../Store/PhysicsStore";
 import { useSoundStore } from "../../Store/SoundStore";
+import { useCameraStore } from "../../Store/CameraStore";
+import "./AppleSpawnButton.css";
 
 interface Apple {
   id: number;
@@ -17,9 +19,16 @@ export default function GibbonPhysics() {
   const incrementAppleCount = usePhysicsStore(
     (state) => state.incrementAppleCount
   );
+  const triggerAppleSpawn = usePhysicsStore((state) => state.triggerAppleSpawn);
+  const appleCount = usePhysicsStore((state) => state.appleCount);
   const isSoundEnabled = useSoundStore((state) => state.isSoundEnabled);
+  const selectedPOI = useCameraStore((state) => state.selectedPOI);
   const [apples, setApples] = useState<Apple[]>([]);
   const clapSoundRef = useRef<HTMLAudioElement | null>(null);
+
+  const maxApples = 45;
+  const canDropApple = appleCount < maxApples;
+  const isGibbonDialogOpen = selectedPOI?.id === 3;
 
   // Initialize clap sound
   useEffect(() => {
@@ -56,8 +65,25 @@ export default function GibbonPhysics() {
       }
     }
   }, [shouldSpawnApple, resetAppleSpawn, incrementAppleCount, isSoundEnabled]);
+
   return (
     <group>
+      {/* Apple Spawn Button - Only visible when Gibbon dialog is open */}
+      {isGibbonDialogOpen && (
+        <Html position={[-55, -445, -525]} center transform={false} sprite>
+          <button
+            className="apple-spawn-button"
+            onClick={triggerAppleSpawn}
+            disabled={!canDropApple}
+            aria-label={`Fill the food chest. ${
+              appleCount > 0 ? `${appleCount} of ${maxApples} apples` : ""
+            }`}
+          >
+            Fill the food chest
+          </button>
+        </Html>
+      )}
+
       {/* Falling Apples */}
       {apples.map((apple) => (
         <RigidBody

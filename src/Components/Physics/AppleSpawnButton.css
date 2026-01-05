@@ -1,0 +1,55 @@
+/* Apple Spawn Button - 3D World Button */
+.apple-spawn-button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-white);
+    color: var(--color-primary);
+    border: 0.125rem solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: 0 0.25rem 0.75rem var(--color-shadow-dark);
+    white-space: nowrap;
+    font-family: var(--font-primary);
+    animation: buttonPulse 1.5s ease-in-out infinite;
+}
+
+.apple-spawn-button:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-0.125rem) scale(1.05);
+    box-shadow: 0 0.5rem 1rem var(--color-shadow-dark);
+    animation: none;
+}
+
+.apple-spawn-button:active {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0.25rem 0.5rem var(--color-shadow);
+    animation: none;
+}
+
+.apple-spawn-button:disabled {
+    background: var(--color-white);
+    color: var(--color-gray-medium);
+    border-color: var(--color-gray-medium);
+    cursor: not-allowed;
+    opacity: 0.5;
+    animation: none;
+}
+
+.apple-spawn-button:disabled:hover {
+    transform: none;
+    box-shadow: 0 0.25rem 0.75rem var(--color-shadow-dark);
+    background: var(--color-white);
+    color: var(--color-gray-medium);
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}

@@ -15,18 +15,31 @@ export default function PointOfInterest({
 }: PointOfInterestProps) {
   return (
     <group position={data.position}>
-      {/* POI */}
-      <mesh onClick={onClick} rotation={[-Math.PI / 2, 0, 0]}>
-        <ringGeometry args={[6, 8, 32]} />
-        <meshBasicMaterial color="#ff6b35" transparent opacity={0.3} />
+      {/* 3D POI Marker - subtle ground indicator */}
+      <mesh
+        onClick={onClick}
+        rotation={[-Math.PI / 2, 0, 0]}
+        position={[0, 0.1, 0]}
+      >
+        <circleGeometry args={[4, 32]} />
+        <meshBasicMaterial color="#ff6b35" transparent opacity={0.2} />
       </mesh>
 
-      {/* HTML Label */}
+      {/* HTML Label - circular image POI */}
       {!isHidden && (
         <Html center transform={false} sprite>
-          <div className="poi-label" onClick={onClick}>
-            {data.name}
-          </div>
+          <button
+            className="poi"
+            onClick={onClick}
+            aria-label={`Point of interest: ${data.name}`}
+          >
+            <img
+              className="poi__image"
+              src={`/Images/${data.picture}`}
+              alt=""
+              role="presentation"
+            />
+          </button>
         </Html>
       )}
     </group>

@@ -14,39 +14,45 @@ export default function POIDialog({ data, onClose }: POIDialogProps) {
   if (!data) return null;
 
   const isGibbonPOI = data.id === 3;
-  const maxApples = 50;
+  const maxApples = 45;
   const canDropApple = appleCount < maxApples;
 
   return (
-    <div className="poi-dialog-overlay" onClick={onClose}>
-      <div className="poi-dialog" onClick={(e) => e.stopPropagation()}>
-        <button className="poi-dialog-close" onClick={onClose}>
+    <div
+      className="poi-dialog"
+      role="dialog"
+      aria-labelledby="poi-dialog-title"
+      aria-modal="true"
+    >
+      <article
+        className="poi-dialog__content"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          className="poi-dialog__close"
+          onClick={onClose}
+          aria-label="Close dialog"
+        >
           ✕
         </button>
 
-        <h2 className="poi-dialog-title">{data.name}</h2>
+        <h2 id="poi-dialog-title" className="poi-dialog__title">
+          {data.name}
+        </h2>
 
-        <p className="poi-dialog-description">{data.description}</p>
+        <p className="poi-dialog__description">{data.description}</p>
 
-        <div className="poi-dialog-facts">
-          <h3>Interesting Facts:</h3>
-          <ul>
+        <aside className="poi-dialog__facts">
+          <h3 className="poi-dialog__facts-title">In short...</h3>
+          <ul className="poi-dialog__facts-list">
             {data.facts.map((fact, index) => (
-              <li key={index}>{fact}</li>
+              <li key={index} className="poi-dialog__facts-item">
+                {fact}
+              </li>
             ))}
           </ul>
-        </div>
-
-        {isGibbonPOI && (
-          <button
-            className="apple-spawn-button"
-            onClick={triggerAppleSpawn}
-            disabled={!canDropApple}
-          >
-            🍎 Drop Apple {appleCount > 0 && `(${appleCount}/${maxApples})`}
-          </button>
-        )}
-      </div>
+        </aside>
+      </article>
     </div>
   );
 }

@@ -1,13 +1,14 @@
+/* Logo - BEM Structure */
 .logo {
     position: fixed;
     top: 1.25rem;
-    left: 2rem;
+    left: var(--spacing-lg);
     z-index: 1000;
     pointer-events: none;
 }
 
-.logo img {
+.logo__image {
     width: 15rem;
     display: block;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 0.125rem 0.25rem var(--color-shadow-medium));
 }
