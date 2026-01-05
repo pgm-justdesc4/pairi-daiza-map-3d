@@ -70,16 +70,13 @@ export default function GibbonPhysics() {
     <group>
       {/* Apple Spawn Button - Only visible when Gibbon dialog is open */}
       {isGibbonDialogOpen && (
-        <Html position={[-55, -445, -525]} center transform={false} sprite>
+        <Html position={[10, -460, -525]} center transform={false} sprite>
           <button
             className="apple-spawn-button"
             onClick={triggerAppleSpawn}
             disabled={!canDropApple}
-            aria-label={`Fill the food chest. ${
-              appleCount > 0 ? `${appleCount} of ${maxApples} apples` : ""
-            }`}
           >
-            Fill the food chest
+            {canDropApple ? "Fill the food chest" : "The chest is full"}
           </button>
         </Html>
       )}

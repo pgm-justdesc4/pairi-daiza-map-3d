@@ -10,6 +10,7 @@
         "Communicate through low-frequency sounds"
       ],
       "picture": "elephants.svg",
+      "sound": "elephants.wav",
       "position": [-200, 0, -90],
       "cameraPosition": [-350, -50, 0],
       "cameraTarget": [-350, -140, -70]
@@ -24,6 +25,7 @@
         "Have the longest interbirth interval of any land mammal"
       ],
       "picture": "orangutans.svg",
+      "sound": "orangutans.mp3",
       "position": [50, 0, 30],
       "cameraPosition": [80, -20, 200],
       "cameraTarget": [80, -200, -20]
@@ -38,6 +40,7 @@
         "Form monogamous pair bonds"
       ],
       "picture": "gibbon-ape.svg",
+      "sound": "gibbons.mp3",
       "position": [50, 0, -300],
       "cameraPosition": [20, -450, -800],
       "cameraTarget": [20, -420, -500]

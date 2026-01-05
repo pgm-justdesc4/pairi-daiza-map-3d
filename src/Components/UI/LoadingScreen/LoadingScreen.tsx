@@ -6,6 +6,8 @@ import "./LoadingScreen.css";
 function LoadingScreen() {
   const { progress } = useProgress();
   const isFullyLoaded = useLoadingStore((state) => state.isFullyLoaded());
+  const hasLaunched = useLoadingStore((state) => state.hasLaunched);
+  const setHasLaunched = useLoadingStore((state) => state.setHasLaunched);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -17,6 +19,10 @@ function LoadingScreen() {
       return () => clearTimeout(timer);
     }
   }, [progress, isFullyLoaded]);
+
+  const handleLaunch = () => {
+    setHasLaunched(true);
+  };
 
   if (!visible) return null;
 
@@ -32,25 +38,37 @@ function LoadingScreen() {
           <img src="/Images/Logo.png" alt="Pairi Daiza Logo" />
         </figure>
         <h1 className="loading-screen__title">The Kingdom of Ganesha</h1>
-        <div
-          className="loading-screen__progress"
-          role="progressbar"
-          aria-valuenow={progress}
-          aria-valuemin={0}
-          aria-valuemax={100}
-        >
-          <div
-            className="loading-screen__progress-bar"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-        <p className="loading-screen__text">
-          {progress < 100
-            ? `${Math.round(progress)}%`
-            : isFullyLoaded
-            ? "Ready!"
-            : "Initializing..."}
-        </p>
+
+        {!hasLaunched ? (
+          <button
+            className="loading-screen__launch-button"
+            onClick={handleLaunch}
+          >
+            Launch <span className="loading-screen__arrow-right">→</span>
+          </button>
+        ) : (
+          <>
+            <div
+              className="loading-screen__progress"
+              role="progressbar"
+              aria-valuenow={progress}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            >
+              <div
+                className="loading-screen__progress-bar"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+            <p className="loading-screen__text">
+              {progress < 100
+                ? `${Math.round(progress)}%`
+                : isFullyLoaded
+                ? "Ready!"
+                : "Initializing..."}
+            </p>
+          </>
+        )}
       </div>
     </section>
   );

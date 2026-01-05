@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import "./MusicToggle.css";
 import { useSoundStore } from "../../../Store/SoundStore";
+import { useLoadingStore } from "../../../Store/LoadingStore";
 
 function MusicToggle() {
   const [isPlaying, setIsPlaying] = useState(true);
   const setSound = useSoundStore((state) => state.setSound);
+  const setBackgroundMusicRef = useSoundStore(
+    (state) => state.setBackgroundMusicRef
+  );
+  const stopAnimalSound = useSoundStore((state) => state.stopAnimalSound);
+  const isFullyLoaded = useLoadingStore((state) => state.isFullyLoaded());
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -13,20 +19,28 @@ function MusicToggle() {
     audioRef.current.loop = true;
     audioRef.current.volume = 0.3; // Set to 30% volume
 
-    // Auto-play music on mount
-    audioRef.current.play().catch((error) => {
-      console.error("Error auto-playing audio:", error);
-      setIsPlaying(false);
-    });
+    // Register the audio ref in the store
+    setBackgroundMusicRef(audioRef.current);
 
     return () => {
       // Cleanup on unmount
       if (audioRef.current) {
         audioRef.current.pause();
+        setBackgroundMusicRef(null);
         audioRef.current = null;
       }
     };
-  }, []);
+  }, [setBackgroundMusicRef]);
+
+  // Start playing music when fully initialized
+  useEffect(() => {
+    if (isFullyLoaded && audioRef.current && isPlaying) {
+      audioRef.current.play().catch((error) => {
+        console.error("Error auto-playing audio:", error);
+        setIsPlaying(false);
+      });
+    }
+  }, [isFullyLoaded, isPlaying]);
 
   const toggleMusic = () => {
     if (!audioRef.current) return;
@@ -34,6 +48,7 @@ function MusicToggle() {
     if (isPlaying) {
       audioRef.current.pause();
       setSound(false);
+      stopAnimalSound();
     } else {
       audioRef.current.play().catch((error) => {
         console.error("Error playing audio:", error);

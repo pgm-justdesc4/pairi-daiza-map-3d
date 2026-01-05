@@ -1,6 +1,8 @@
 import "./POIDialog.css";
 import type { POI } from "../../../Types/poi";
 import { usePhysicsStore } from "../../../Store/PhysicsStore";
+import { useSoundStore } from "../../../Store/SoundStore";
+import { useEffect } from "react";
 
 interface POIDialogProps {
   data: POI | null;
@@ -10,6 +12,31 @@ interface POIDialogProps {
 export default function POIDialog({ data, onClose }: POIDialogProps) {
   const triggerAppleSpawn = usePhysicsStore((state) => state.triggerAppleSpawn);
   const appleCount = usePhysicsStore((state) => state.appleCount);
+  const playAnimalSound = useSoundStore((state) => state.playAnimalSound);
+  const stopAnimalSound = useSoundStore((state) => state.stopAnimalSound);
+  const isSoundEnabled = useSoundStore((state) => state.isSoundEnabled);
+
+  useEffect(() => {
+    // Play animal sound when dialog opens (if the POI has a sound)
+    if (data?.sound) {
+      playAnimalSound(`/Sounds/${data.sound}`);
+    }
+
+    // Stop animal sound when dialog closes
+    return () => {
+      stopAnimalSound();
+    };
+  }, [data, playAnimalSound, stopAnimalSound]);
+
+  useEffect(() => {
+    // Stop animal sound when sound is disabled
+    if (!isSoundEnabled) {
+      stopAnimalSound();
+    } else if (data?.sound) {
+      // Resume playing if sound is re-enabled while dialog is open
+      playAnimalSound(`/Sounds/${data.sound}`);
+    }
+  }, [isSoundEnabled, data, playAnimalSound, stopAnimalSound]);
 
   if (!data) return null;
 

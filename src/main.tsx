@@ -6,9 +6,11 @@ import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience.tsx";
 import POIDialog from "./Components/UI/POIDialog/POIDialog.tsx";
 import MusicToggle from "./Components/UI/MusicToggle/MusicToggle.tsx";
+import QuitButton from "./Components/UI/QuitButton/QuitButton.tsx";
 import LoadingScreen from "./Components/UI/LoadingScreen/LoadingScreen.tsx";
 import Logo from "./Components/UI/Logo/Logo.tsx";
 import { useCameraStore } from "./Store/CameraStore.ts";
+import { useLoadingStore } from "./Store/LoadingStore.ts";
 
 const cameraSettings = {
   fov: 60,
@@ -20,6 +22,7 @@ const cameraSettings = {
 function App() {
   const selectedPOI = useCameraStore((state) => state.selectedPOI);
   const setSelectedPOI = useCameraStore((state) => state.setSelectedPOI);
+  const hasLaunched = useLoadingStore((state) => state.hasLaunched);
   const resetCameraRef = useRef<(() => void) | null>(null);
 
   const handleCloseDialog = () => {
@@ -31,17 +34,20 @@ function App() {
 
   return (
     <>
-      <Canvas camera={cameraSettings} shadows>
-        <Suspense fallback={null}>
-          <Experience
-            onPOISelect={setSelectedPOI}
-            resetCameraRef={resetCameraRef}
-          />
-        </Suspense>
-      </Canvas>
+      {hasLaunched && (
+        <Canvas camera={cameraSettings} shadows>
+          <Suspense fallback={null}>
+            <Experience
+              onPOISelect={setSelectedPOI}
+              resetCameraRef={resetCameraRef}
+            />
+          </Suspense>
+        </Canvas>
+      )}
       <LoadingScreen />
       <Logo />
       <MusicToggle />
+      <QuitButton />
       {selectedPOI && (
         <POIDialog data={selectedPOI} onClose={handleCloseDialog} />
       )}
