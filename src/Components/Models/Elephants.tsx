@@ -25,13 +25,6 @@ function Elephant({ position, rotation, scale, animation }: Elephant) {
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    scene.traverse((child) => {
-      child.castShadow = true;
-      child.receiveShadow = true;
-    });
-  }, [scene]);
-
-  useEffect(() => {
     if (actions && actions[animation]) {
       actions[animation].play();
     }

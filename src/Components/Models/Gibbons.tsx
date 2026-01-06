@@ -25,13 +25,6 @@ function Gibbon({ position, rotation, scale, animation }: Gibbon) {
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    scene.traverse((child) => {
-      child.castShadow = true;
-      child.receiveShadow = true;
-    });
-  }, [scene]);
-
-  useEffect(() => {
     if (actions && actions[animation]) {
       actions[animation].play();
     }

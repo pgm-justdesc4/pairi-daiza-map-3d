@@ -93,12 +93,7 @@ export default function FoodSpawn() {
           friction={0.6}
           mass={0.2}
         >
-          <primitive
-            object={appleScene.clone()}
-            scale={0.05}
-            castShadow
-            receiveShadow
-          />
+          <primitive object={appleScene.clone()} scale={0.05} />
         </RigidBody>
       ))}
     </group>

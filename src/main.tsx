@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       {hasLaunched && (
-        <Canvas camera={cameraSettings} shadows>
+        <Canvas camera={cameraSettings}>
           <Suspense fallback={null}>
             <Experience
               onPOISelect={setSelectedPOI}

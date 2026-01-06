@@ -64,21 +64,7 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
       {/* <OrbitControls makeDefault /> */}
       {/* Lightning */}
       <ambientLight intensity={0.7} />
-      <directionalLight
-        position={[10, 120, 5]}
-        intensity={2}
-        castShadow
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-        shadow-camera-left={-600}
-        shadow-camera-right={600}
-        shadow-camera-top={600}
-        shadow-camera-bottom={-600}
-        shadow-camera-near={1}
-        shadow-camera-far={800}
-        shadow-bias={-0.0005}
-        shadow-normalBias={0.05}
-      />
+      <directionalLight position={[10, 120, 5]} intensity={2} />
 
       {/* Clouds */}
       <Clouds />

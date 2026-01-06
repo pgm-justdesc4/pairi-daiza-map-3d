@@ -51,13 +51,6 @@ function Elephant({
   const currentPosition = useRef(new THREE.Vector3(...waypoints[0]));
 
   useEffect(() => {
-    scene.traverse((child) => {
-      child.castShadow = true;
-      child.receiveShadow = true;
-    });
-  }, [scene]);
-
-  useEffect(() => {
     if (actions && actions[animation]) {
       actions[animation].play();
     }

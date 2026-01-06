@@ -41,8 +41,6 @@ export default function Water() {
       scene.traverse((child) => {
         if ((child as THREE.Mesh).isMesh) {
           const mesh = child as THREE.Mesh;
-          mesh.castShadow = false;
-          mesh.receiveShadow = true;
           if (
             mesh.material &&
             (mesh.material as THREE.MeshStandardMaterial).map !== undefined

@@ -11,13 +11,6 @@ export default function Map() {
   const rigidBodyRef = useRef<RapierRigidBody>(null);
 
   useEffect(() => {
-    scene.traverse((child) => {
-      child.castShadow = false;
-      child.receiveShadow = true;
-    });
-  }, [scene]);
-
-  useEffect(() => {
     const timer = setTimeout(() => {
       if (rigidBodyRef.current) {
         setMapReady(true);

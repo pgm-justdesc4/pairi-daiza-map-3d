@@ -46,13 +46,6 @@ function Orangutan({ position, rotation, scale, animation }: Orangutan) {
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    scene.traverse((child) => {
-      child.castShadow = true;
-      child.receiveShadow = true;
-    });
-  }, [scene]);
-
-  useEffect(() => {
     if (actions && actions[animation]) {
       actions[animation].play();
     }
