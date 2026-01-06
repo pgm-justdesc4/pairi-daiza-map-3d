@@ -2,7 +2,6 @@ import { useGLTF, useAnimations, Clone } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import type { Gibbon } from "../../Types/gibbon";
 
-// Configuration for each Gibbon
 const GibbonConfigs: Gibbon[] = [
   {
     id: 1,

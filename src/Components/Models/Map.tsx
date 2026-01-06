@@ -15,9 +15,7 @@ export default function Map() {
     });
   }, [scene]);
 
-  // Signal when rigid body and collider are ready
   useEffect(() => {
-    // Small delay to ensure trimesh collider is fully computed
     const timer = setTimeout(() => {
       if (rigidBodyRef.current) {
         setMapReady(true);

@@ -15,7 +15,6 @@ export default function PointOfInterest({
 }: PointOfInterestProps) {
   return (
     <group position={data.position}>
-      {/* 3D POI Marker - subtle ground indicator */}
       <mesh
         onClick={onClick}
         rotation={[-Math.PI / 2, 0, 0]}
@@ -25,7 +24,6 @@ export default function PointOfInterest({
         <meshBasicMaterial color="#ff6b35" transparent opacity={0.2} />
       </mesh>
 
-      {/* HTML Label - circular image POI */}
       {!isHidden && (
         <Html center transform={false} sprite>
           <button

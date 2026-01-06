@@ -1,8 +1,7 @@
 import "./QuitButton.css";
 
-function QuitButton() {
+export default function QuitButton() {
   const handleQuit = () => {
-    // Reload the page to properly reset everything
     window.location.reload();
   };
 
@@ -31,5 +30,3 @@ function QuitButton() {
     </button>
   );
 }
-
-export default QuitButton;

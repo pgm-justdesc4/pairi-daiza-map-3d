@@ -2,7 +2,6 @@ import { useGLTF, useAnimations, Clone } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import type { Orangutan } from "../../Types/orangutan";
 
-// Configuration for each Orangutan
 const OrangutanConfigs: Orangutan[] = [
   {
     id: 1,

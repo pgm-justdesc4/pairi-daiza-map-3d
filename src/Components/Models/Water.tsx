@@ -1,5 +1,4 @@
 import { useGLTF } from "@react-three/drei";
-import { useState } from "react";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
@@ -7,9 +6,7 @@ export default function Water() {
   const { scene } = useGLTF("/Models/Water.glb");
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [videoTexture, setVideoTexture] = useState<THREE.VideoTexture | null>(
-    null
-  );
+  const videoTextureRef = useRef<THREE.VideoTexture | null>(null);
   const videoSpeed = 0.35;
 
   useEffect(() => {
@@ -28,7 +25,7 @@ export default function Water() {
       const texture = new THREE.VideoTexture(video);
       texture.colorSpace = THREE.SRGBColorSpace;
       texture.needsUpdate = true;
-      setVideoTexture(texture);
+      videoTextureRef.current = texture;
     }
   }, []);
 
@@ -39,8 +36,8 @@ export default function Water() {
   }, [videoSpeed]);
 
   useEffect(() => {
+    const videoTexture = videoTextureRef.current;
     if (videoTexture && scene) {
-      // Find the mesh in the GLB and apply the video texture
       scene.traverse((child) => {
         if ((child as THREE.Mesh).isMesh) {
           const mesh = child as THREE.Mesh;
@@ -57,7 +54,7 @@ export default function Water() {
         }
       });
     }
-  }, [videoTexture, scene]);
+  }, [scene]);
 
   return (
     <primitive

@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { usePhysicsStore } from "../../Store/PhysicsStore";
 import { useSoundStore } from "../../Store/SoundStore";
 import { useCameraStore } from "../../Store/CameraStore";
-import "./AppleSpawnButton.css";
+import "./FoodSpawn.css";
 
 interface Apple {
   id: number;
@@ -12,7 +12,7 @@ interface Apple {
   velocity: [number, number, number];
 }
 
-export default function GibbonPhysics() {
+export default function FoodSpawn() {
   const { scene: appleScene } = useGLTF("/Models/apple.glb");
   const shouldSpawnApple = usePhysicsStore((state) => state.shouldSpawnApple);
   const resetAppleSpawn = usePhysicsStore((state) => state.resetAppleSpawn);
@@ -30,7 +30,6 @@ export default function GibbonPhysics() {
   const canDropApple = appleCount < maxApples;
   const isGibbonDialogOpen = selectedPOI?.id === 3;
 
-  // Initialize clap sound
   useEffect(() => {
     clapSoundRef.current = new Audio("/Sounds/383008__thedcheck__clap-3.wav");
     clapSoundRef.current.volume = 0.5;
@@ -43,32 +42,35 @@ export default function GibbonPhysics() {
 
   useEffect(() => {
     if (shouldSpawnApple) {
-      // Random initial velocity so apples roll in different directions
-      const randomVelX = (Math.random() - 0.5) * 15;
-      const randomVelZ = (Math.random() - 0.5) * 15;
+      // Use queueMicrotask to defer state update and avoid cascading render warning
+      queueMicrotask(() => {
+        // Random initial velocity for apple
+        const randomVelX = (Math.random() - 0.5) * 15;
+        const randomVelZ = (Math.random() - 0.5) * 15;
 
-      const newApple: Apple = {
-        id: Date.now() + Math.random(),
-        position: [10, -420, -525], // Fixed spawn point
-        velocity: [randomVelX, 0, randomVelZ],
-      };
-      setApples((prev) => [...prev, newApple]);
+        const newApple: Apple = {
+          id: Date.now() + Math.random(),
+          position: [10, -420, -525],
+          velocity: [randomVelX, 0, randomVelZ],
+        };
+
+        setApples((prev) => [...prev, newApple]);
+
+        if (isSoundEnabled && clapSoundRef.current) {
+          clapSoundRef.current.currentTime = 0;
+          clapSoundRef.current.play().catch((error) => {
+            console.error("Error playing clap sound:", error);
+          });
+        }
+      });
+
       incrementAppleCount();
       resetAppleSpawn();
-
-      // Play clap sound if sound is enabled
-      if (isSoundEnabled && clapSoundRef.current) {
-        clapSoundRef.current.currentTime = 0; // Reset to start
-        clapSoundRef.current.play().catch((error) => {
-          console.error("Error playing clap sound:", error);
-        });
-      }
     }
   }, [shouldSpawnApple, resetAppleSpawn, incrementAppleCount, isSoundEnabled]);
 
   return (
     <group>
-      {/* Apple Spawn Button - Only visible when Gibbon dialog is open */}
       {isGibbonDialogOpen && (
         <Html position={[10, -460, -525]} center transform={false} sprite>
           <button
@@ -81,7 +83,6 @@ export default function GibbonPhysics() {
         </Html>
       )}
 
-      {/* Falling Apples */}
       {apples.map((apple) => (
         <RigidBody
           key={apple.id}

@@ -9,7 +9,6 @@ interface WalkingElephant extends Elephant {
   speed: number;
 }
 
-// Configuration for each Elephant with movement paths
 const ElephantConfigs: WalkingElephant[] = [
   {
     id: 1,
@@ -21,7 +20,7 @@ const ElephantConfigs: WalkingElephant[] = [
       [-100, -485, -600],
       [-650, -485, -600],
     ],
-    speed: 20, // Units per second
+    speed: 20,
   },
   {
     id: 2,
@@ -33,7 +32,7 @@ const ElephantConfigs: WalkingElephant[] = [
       [-300, -500, -645],
       [500, -500, -645],
     ],
-    speed: 50, // Units per second
+    speed: 50,
   },
 ];
 
@@ -64,7 +63,7 @@ function Elephant({
     }
   }, [actions, animation]);
 
-  // Animate movement using useFrame
+  // movement
   useFrame((state, delta) => {
     if (!group.current) return;
 
@@ -75,31 +74,26 @@ function Elephant({
       targetWaypoint[2]
     );
 
-    // Calculate direction to target (only in X and Z)
     const direction = new THREE.Vector3(
       target.x - currentPosition.current.x,
-      0, // Don't move in Y
+      0,
       target.z - currentPosition.current.z
     );
     const distance = direction.length();
 
     if (distance < 1) {
-      // Reached waypoint, move to next
       currentWaypointIndex.current =
         (currentWaypointIndex.current + 1) % waypoints.length;
     } else {
-      // Move towards target
       direction.normalize();
       const moveDistance = Math.min(speed * delta, distance);
       currentPosition.current.x += direction.x * moveDistance;
       currentPosition.current.z += direction.z * moveDistance;
-      // Keep Y constant
       currentPosition.current.y = targetWaypoint[1];
 
-      // Update position
       group.current.position.copy(currentPosition.current);
 
-      // Update rotation to face movement direction
+      // rotate
       const angle = Math.atan2(direction.x, direction.z);
       group.current.rotation.y = angle;
     }

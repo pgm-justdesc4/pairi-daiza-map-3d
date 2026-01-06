@@ -15,7 +15,7 @@ import Gibbons from "./Components/Models/Gibbons.tsx";
 import WalkingElephants from "./Components/Models/WalkingElephants.tsx";
 import { OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
-import GibbonPhysics from "./Components/Physics/GibbonPhysics.tsx";
+import FoodSpawn from "./Components/Physics/FoodSpawn.tsx";
 
 interface ExperienceProps {
   onPOISelect: (poi: POI) => void;
@@ -29,7 +29,6 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
     useCameraStore();
   const setPhysicsReady = useLoadingStore((state) => state.setPhysicsReady);
 
-  // Save initial camera state on mount
   useEffect(() => {
     setInitialPosition([
       camera.position.x,
@@ -52,7 +51,6 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
     onPOISelect(poi);
   };
 
-  // Expose resetCamera to parent via ref
   useEffect(() => {
     const resetCamera = () => {
       animateTo(initialPosition, [0, 0, 0], 2);
@@ -97,7 +95,7 @@ function Experience({ onPOISelect, resetCameraRef }: ExperienceProps) {
           <Water />
         </group>
 
-        <GibbonPhysics />
+        <FoodSpawn />
       </Physics>
 
       {/* Points of Interest */}

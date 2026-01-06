@@ -2,7 +2,6 @@ import { useGLTF, useAnimations, Clone } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import type { Elephant } from "../../Types/elephant";
 
-// Configuration for each elephant
 const elephantConfigs: Elephant[] = [
   {
     id: 1,

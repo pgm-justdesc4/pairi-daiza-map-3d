@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useLoadingStore } from "../../../Store/LoadingStore";
 import "./LoadingScreen.css";
 
-function LoadingScreen() {
+export default function LoadingScreen() {
   const { progress } = useProgress();
   const isFullyLoaded = useLoadingStore((state) => state.isFullyLoaded());
   const hasLaunched = useLoadingStore((state) => state.hasLaunched);
@@ -11,7 +11,6 @@ function LoadingScreen() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Only hide when both assets are loaded (100%) AND physics/map are ready
     if (progress === 100 && isFullyLoaded) {
       const timer = setTimeout(() => {
         setVisible(false);
@@ -73,5 +72,3 @@ function LoadingScreen() {
     </section>
   );
 }
-
-export default LoadingScreen;

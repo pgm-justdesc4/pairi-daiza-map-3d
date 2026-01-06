@@ -1,6 +1,6 @@
 import "./Logo.css";
 
-function Logo() {
+export default function Logo() {
   return (
     <header className="logo">
       <img
@@ -11,5 +11,3 @@ function Logo() {
     </header>
   );
 }
-
-export default Logo;

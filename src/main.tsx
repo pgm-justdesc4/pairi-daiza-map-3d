@@ -5,7 +5,7 @@ import "./index.css";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience.tsx";
 import POIDialog from "./Components/UI/POIDialog/POIDialog.tsx";
-import MusicToggle from "./Components/UI/MusicToggle/MusicToggle.tsx";
+import SoundToggle from "./Components/UI/SoundToggle/SoundToggle.tsx";
 import QuitButton from "./Components/UI/QuitButton/QuitButton.tsx";
 import LoadingScreen from "./Components/UI/LoadingScreen/LoadingScreen.tsx";
 import Logo from "./Components/UI/Logo/Logo.tsx";
@@ -46,7 +46,7 @@ function App() {
       )}
       <LoadingScreen />
       <Logo />
-      <MusicToggle />
+      <SoundToggle />
       <QuitButton />
       {selectedPOI && (
         <POIDialog data={selectedPOI} onClose={handleCloseDialog} />

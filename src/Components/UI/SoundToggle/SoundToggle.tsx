@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import "./MusicToggle.css";
+import "./SoundToggle.css";
 import { useSoundStore } from "../../../Store/SoundStore";
 import { useLoadingStore } from "../../../Store/LoadingStore";
 
-function MusicToggle() {
+export default function SoundToggle() {
   const [isPlaying, setIsPlaying] = useState(true);
   const setSound = useSoundStore((state) => state.setSound);
   const setBackgroundMusicRef = useSoundStore(
@@ -14,16 +14,14 @@ function MusicToggle() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Create audio element
     audioRef.current = new Audio("/Sounds/background-music.mp3");
     audioRef.current.loop = true;
-    audioRef.current.volume = 0.3; // Set to 30% volume
+    audioRef.current.volume = 0.3; // 30%
 
-    // Register the audio ref in the store
     setBackgroundMusicRef(audioRef.current);
 
     return () => {
-      // Cleanup on unmount
+      // Cleanup
       if (audioRef.current) {
         audioRef.current.pause();
         setBackgroundMusicRef(null);
@@ -32,7 +30,7 @@ function MusicToggle() {
     };
   }, [setBackgroundMusicRef]);
 
-  // Start playing music when fully initialized
+  // play music when fully loaded
   useEffect(() => {
     if (isFullyLoaded && audioRef.current && isPlaying) {
       audioRef.current.play().catch((error) => {
@@ -103,5 +101,3 @@ function MusicToggle() {
     </button>
   );
 }
-
-export default MusicToggle;
