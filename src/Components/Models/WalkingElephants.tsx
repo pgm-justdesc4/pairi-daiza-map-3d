@@ -64,7 +64,7 @@ function Elephant({
   }, [actions, animation]);
 
   // movement
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (!group.current) return;
 
     const targetWaypoint = waypoints[currentWaypointIndex.current];
