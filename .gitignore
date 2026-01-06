@@ -13,7 +13,7 @@ dist-ssr
 *.local
 
 # Large model files
-public/Models/
+public/Models/Map.glb
 
 # Editor directories and files
 .vscode/*

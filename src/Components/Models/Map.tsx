@@ -3,8 +3,10 @@ import { useEffect, useRef } from "react";
 import { RigidBody, RapierRigidBody } from "@react-three/rapier";
 import { useLoadingStore } from "../../Store/LoadingStore";
 
+useGLTF.setDecoderPath("/draco/");
+
 export default function Map() {
-  const { scene } = useGLTF("/Models/Map.glb");
+  const { scene } = useGLTF("/Models/Map-DRACO.glb");
   const setMapReady = useLoadingStore((state) => state.setMapReady);
   const rigidBodyRef = useRef<RapierRigidBody>(null);
 
