@@ -13,7 +13,7 @@ import Water from "./Components/Models/Water.tsx";
 import Orangutans from "./Components/Models/Orangutans.tsx";
 import Gibbons from "./Components/Models/Gibbons.tsx";
 import WalkingElephants from "./Components/Models/WalkingElephants.tsx";
-import { OrbitControls } from "@react-three/drei";
+// import { OrbitControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import FoodSpawn from "./Components/Physics/FoodSpawn.tsx";
 
