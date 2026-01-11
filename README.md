@@ -1,4 +1,4 @@
-# Eindopdracht Technology 3: Map It Out!
+# Eindopdracht Technology 3: Map it out!
 
 Een interactieve 3D map van Pairi Daiza, gebouwd met React Three Fiber. Ontdek 'The Kingdom of Ganesha' in een immersieve 3D-omgeving met animaties, geluidseffecten en interessante punten om te verkennen.
 
@@ -6,11 +6,11 @@ Een interactieve 3D map van Pairi Daiza, gebouwd met React Three Fiber. Ontdek '
 
 Dit project is een 3D visualisatie van Pairi Daiza waar gebruikers kunnen navigeren door de virtuele zoo. De map bevat verschillende gebouwen, dieren en interactieve elementen die een realistische ervaring bieden.
 
-## Live Demo
+## Live project
 
 Bekijk het project online: [https://map-it-out-dexanscript.vercel.app/](https://map-it-out-dexanscript.vercel.app/)
 
-## Tech Stack
+## Tech stack
 
 - **React Three Fiber**
 - **Blender**
@@ -23,7 +23,7 @@ Bekijk het project online: [https://map-it-out-dexanscript.vercel.app/](https://
 
 ## Credits & Assets
 
-### Eigen 3D Modellen (Blender)
+### Eigen 3D modellen (Blender)
 
 - Pairi Daiza 3D Map
 - The Flower Temple
@@ -31,18 +31,18 @@ Bekijk het project online: [https://map-it-out-dexanscript.vercel.app/](https://
 - Elephant Palace
 - Lunch Place
 
-### Drei Components
+### Drei components
 
 - Clouds
 
-### Sketchfab Modellen
+### Sketchfab modellen
 
 - Dieren (elephants, gibbons, orangutans)
 - Omheining
 - Bomen
 - Appels
 
-## Installatie & Lokaal Runnen
+## Installatie & Lokaal runnen
 
 1. Clone de repository
 
