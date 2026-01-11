@@ -1,9 +1,9 @@
 import { useProgress } from "@react-three/drei";
 import { useEffect, useState } from "react";
 import { useLoadingStore } from "../../../Store/LoadingStore";
-import "./LoadingScreen.css";
+import "./LaunschScreen.css";
 
-export default function LoadingScreen() {
+export default function LaunschScreen() {
   const { progress } = useProgress();
   const isFullyLoaded = useLoadingStore((state) => state.isFullyLoaded());
   const hasLaunched = useLoadingStore((state) => state.hasLaunched);

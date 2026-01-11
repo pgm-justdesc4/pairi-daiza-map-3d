@@ -7,7 +7,7 @@ import Experience from "./Experience.tsx";
 import POIDialog from "./Components/UI/POIDialog/POIDialog.tsx";
 import SoundToggle from "./Components/UI/SoundToggle/SoundToggle.tsx";
 import QuitButton from "./Components/UI/QuitButton/QuitButton.tsx";
-import LoadingScreen from "./Components/UI/LoadingScreen/LoadingScreen.tsx";
+import LaunschScreen from "./Components/UI/LaunchScreen/LaunchScreen.tsx";
 import Logo from "./Components/UI/Logo/Logo.tsx";
 import { useCameraStore } from "./Store/CameraStore.ts";
 import { useLoadingStore } from "./Store/LoadingStore.ts";
@@ -44,7 +44,7 @@ function App() {
           </Suspense>
         </Canvas>
       )}
-      <LoadingScreen />
+      <LaunschScreen />
       <Logo />
       <SoundToggle />
       <QuitButton />
