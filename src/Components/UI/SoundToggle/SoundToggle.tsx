@@ -16,7 +16,7 @@ export default function SoundToggle() {
   useEffect(() => {
     audioRef.current = new Audio("/Sounds/background-music.mp3");
     audioRef.current.loop = true;
-    audioRef.current.volume = 0.3; // 30%
+    audioRef.current.volume = 0.1; // 10%
 
     setBackgroundMusicRef(audioRef.current);
 

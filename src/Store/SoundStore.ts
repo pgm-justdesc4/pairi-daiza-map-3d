@@ -27,7 +27,7 @@ export const useSoundStore = create<SoundStore>((set, get) => ({
     if (!state.isSoundEnabled) return;
 
     if (state.backgroundMusicRef) {
-      state.backgroundMusicRef.volume = 0.07; // 7%
+      state.backgroundMusicRef.volume = 0.05; // 5%
       if (state.backgroundMusicRef.paused) {
         state.backgroundMusicRef.play().catch((error) => {
           console.error("Error resuming background music:", error);
@@ -36,13 +36,13 @@ export const useSoundStore = create<SoundStore>((set, get) => ({
     }
 
     const audio = new Audio(soundPath);
-    audio.volume = 0.3; // 30%
+    audio.volume = 0.25; // 25%
     audio.loop = true;
 
     audio.play().catch((error) => {
       console.error("Error playing animal sound:", error);
       if (state.backgroundMusicRef) {
-        state.backgroundMusicRef.volume = 0.15; // 15%
+        state.backgroundMusicRef.volume = 0.1; // 10%
       }
     });
 
@@ -57,7 +57,7 @@ export const useSoundStore = create<SoundStore>((set, get) => ({
     }
 
     if (state.backgroundMusicRef) {
-      state.backgroundMusicRef.volume = 0.15; // 15%
+      state.backgroundMusicRef.volume = 0.1; // 10%
     }
 
     set({ currentAnimalSound: null });

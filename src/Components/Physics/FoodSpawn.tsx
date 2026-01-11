@@ -42,9 +42,7 @@ export default function FoodSpawn() {
 
   useEffect(() => {
     if (shouldSpawnApple) {
-      // Use queueMicrotask to defer state update and avoid cascading render warning
-      queueMicrotask(() => {
-        // Random initial velocity for apple
+      setTimeout(() => {
         const randomVelX = (Math.random() - 0.5) * 15;
         const randomVelZ = (Math.random() - 0.5) * 15;
 
@@ -62,7 +60,7 @@ export default function FoodSpawn() {
             console.error("Error playing clap sound:", error);
           });
         }
-      });
+      }, 0);
 
       incrementAppleCount();
       resetAppleSpawn();
